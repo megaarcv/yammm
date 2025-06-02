@@ -29,9 +29,41 @@ proxies:
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
+  - name: "Trojan CyberTunnel"
+    type: trojan
+    server: ava.game.naver.com
+    port: 2087
+    password: 98388cbc-3b5c-4778-bb82-d4165f73c8d7
+    network: ws
+    tls: true
+    sni: ustrj.cytun.xyz
+    skip-cert-verify: false
+    udp: true
+    ws-opts:
+      path: /trojan
+      headers:
+        Host: ustrj.cytun.xyz
+
+  - name: "VLESS SSHOcean"
+    type: vless
+    server: ava.game.naver.com
+    port: 443
+    uuid: I_Love_🇵🇸_sshOcean_2694
+    encryption: none
+    network: ws
+    tls: true
+    sni: ava.game.naver.com
+    skip-cert-verify: false
+    ws-opts:
+      path: /vless
+      headers:
+        Host: jp.v2vless.site
+
 proxy-groups:
   - name: "Proxy Group"
     type: select
     proxies:
       - "ID"
       - "SG"
+      - "Trojan CyberTunnel"
+      - "VLESS SSHOcean"
