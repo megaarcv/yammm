@@ -1,3 +1,5 @@
+mode: select
+
 proxies:
   - name: "ID"
     type: vmess
