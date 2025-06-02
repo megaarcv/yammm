@@ -1,0 +1,37 @@
+proxies:
+  - name: "Akun 1"
+    type: vmess
+    server: ava.game.naver.com
+    port: 443
+    uuid: f893266c-4cdd-456e-92b6-a9c35344d090
+    alterId: 0
+    cipher: auto
+    network: ws
+    tls: true
+    skip-cert-verify: false
+    ws-opts:
+      path: /vmessws
+      headers:
+        Host: ava.game.naver.com.id1.ubaistore.my.id
+
+  - name: "Akun 2"
+    type: vmess
+    server: ava.game.naver.com
+    port: 443
+    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
+    alterId: 0
+    cipher: auto
+    network: ws
+    tls: true
+    skip-cert-verify: false
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: ava.game.naver.com.allstorevpn.premm.shop
+
+proxy-groups:
+  - name: "Proxy Group"
+    type: select
+    proxies:
+      - "Akun 1"
+      - "Akun 2"
