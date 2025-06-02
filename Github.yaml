@@ -1,5 +1,5 @@
 proxies:
-  - name: "Akun 1"
+  - name: "ID"
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -14,7 +14,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.id1.ubaistore.my.id
 
-  - name: "Akun 2"
+  - name: "SG"
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -33,5 +33,5 @@ proxy-groups:
   - name: "Proxy Group"
     type: select
     proxies:
-      - "Akun 1"
-      - "Akun 2"
+      - "ID"
+      - "SG"
