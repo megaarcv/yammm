@@ -75,6 +75,22 @@ proxies:
       headers:
         Host: blog.sushiroll.co.id.cyber.nevpn.site
 
+  - name: "VMess JagoanSSH"
+    type: vmess
+    server: investor.fb.com
+    port: 443
+    uuid: 79669172-e0b2-489c-a511-2ccee261d040
+    alterId: 0
+    cipher: auto
+    network: ws
+    tls: true
+    skip-cert-verify: true
+    servername: id2-ray.ipservers.xyz
+    ws-opts:
+      path: /JAGOANSSH/
+      headers:
+        Host: id2-ray.ipservers.xyz
+
 proxy-groups:
   - name: "Proxy Group"
     type: select
@@ -83,3 +99,5 @@ proxy-groups:
       - "SG"
       - "Trojan CyberTunnel"
       - "VLESS SSHOcean"
+      - "VLESS Sushiroll"
+      - "VMess JagoanSSH"
