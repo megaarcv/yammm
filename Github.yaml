@@ -60,6 +60,20 @@ proxies:
       path: /vless
       headers:
         Host: jp.v2vless.site
+        
+  - name: "VLESS Sushiroll"
+    type: vless
+    server: blog.sushiroll.co.id
+    port: 80
+    uuid: c605bdc6-d417-4839-9664-6b6e388e0206
+    encryption: none
+    network: ws
+    tls: false
+    udp: true
+    ws-opts:
+      path: /vless
+      headers:
+        Host: blog.sushiroll.co.id.cyber.nevpn.site
 
 proxy-groups:
   - name: "Proxy Group"
