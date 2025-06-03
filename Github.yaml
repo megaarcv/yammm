@@ -91,6 +91,22 @@ proxies:
       headers:
         Host: id2-ray.ipservers.xyz
 
+  - name: 🇸🇬 trojan-SG-11975
+    server: 104.21.18.144
+    port: 443
+    type: trojan
+    udp: true
+    skip-cert-verify: true
+    password: 6884d714-d3c4-4b49-aa20-767ea92837d6
+    tls: true
+    sni: icecream.955850.xyz
+    network: ws
+    ws-opts:
+      path: /proxyip=45.67.215.153:443&proxyIP=null
+      headers:
+        Host: icecream.955850.xyz
+
+
 proxy-groups:
   - name: "Proxy Group"
     type: select
@@ -101,3 +117,4 @@ proxy-groups:
       - "VLESS SSHOcean"
       - "VLESS Sushiroll"
       - "VMess JagoanSSH"
+      - " 🇸🇬 trojan-SG-11975"
