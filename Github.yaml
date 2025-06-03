@@ -135,16 +135,6 @@ AKUN-VPN:
       - 1.0.0.1
 
 proxy-groups:
-  - name: Auto
-    type: select
-    proxies:
-      - wireguard-vpnlabs
-
-rules:
-  - MATCH,Auto
-
-
-proxy-groups:
   - name: "Proxy Group"
     type: select
     proxies:
