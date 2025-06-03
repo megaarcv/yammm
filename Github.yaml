@@ -1,6 +1,6 @@
 mode: select
 
-proxies:
+AKUN-VPN:
   - name: "ID"
     type: vmess
     server: ava.game.naver.com
