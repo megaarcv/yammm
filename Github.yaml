@@ -120,6 +120,29 @@ proxies:
       tls: true
     udp: true
 
+  - name: "wireguard-vpnlabs"
+    type: wireguard
+    server: ava.game.naver.com.nl.vpnlabs.site
+    port: 51820
+    ip: 10.66.66.9
+    ipv6: fd42:42:42::9
+    private-key: uLeSuMjNbKjKUPqSKP7w9PkfE0Q0Ejbw7Z7qRIkAeGg=
+    public-key: Xsl2kPJEEyDgFZ6xqRDXpFUwQ63+Iao2FA4LhTCKtEk=
+    pre-shared-key: Vgps4wbQ4FsQ+pUDaIbJT5FGKh2+soBAPI8/XI37m7w=
+    udp: true
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+
+proxy-groups:
+  - name: Auto
+    type: select
+    proxies:
+      - wireguard-vpnlabs
+
+rules:
+  - MATCH,Auto
+
 
 proxy-groups:
   - name: "Proxy Group"
@@ -133,3 +156,4 @@ proxy-groups:
       - "VMess JagoanSSH"
       - "Trojan SG"
       - "SS ID"
+      - "wireguard-vpnlabs"
