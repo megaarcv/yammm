@@ -31,7 +31,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: "Trojan CyberTunnel"
+  - name: "TrojanID"
     type: trojan
     server: ava.game.naver.com
     port: 2087
@@ -91,7 +91,7 @@ proxies:
       headers:
         Host: id2-ray.ipservers.xyz
 
-  - name: 🇸🇬 trojan-SG-11975
+  - name: "TrojanSG"
     server: 104.21.18.144
     port: 443
     type: trojan
@@ -105,6 +105,20 @@ proxies:
       path: /proxyip=45.67.215.153:443&proxyIP=null
       headers:
         Host: icecream.955850.xyz
+        
+  - name: "SS ID"
+    type: ss
+    server: idsocks.ipservers.xyz         
+    port: 443 
+    cipher: aes-256-cfb
+    password: ao5DFwfNdU
+    plugin: xray-plugin
+    plugin-opts:
+      mode: websocket
+      host: ava.game.naver.com
+      path: /ssws
+      tls: true
+    udp: true
 
 
 proxy-groups:
@@ -113,8 +127,9 @@ proxy-groups:
     proxies:
       - "ID"
       - "SG"
-      - "Trojan CyberTunnel"
+      - "TrojanID"
       - "VLESS SSHOcean"
       - "VLESS Sushiroll"
       - "VMess JagoanSSH"
-      - " 🇸🇬 trojan-SG-11975"
+      - "Trojan SG"
+      - "SS ID"
