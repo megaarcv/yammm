@@ -1,149 +1,138 @@
-mode: select
-
-AKUN-VPN:
-  - name: "ID"
-    type: vmess
+proxies:
+  # ==== VLESS GROUP ====
+  - name: "VLESS | LINE"
+    type: vless
     server: ava.game.naver.com
     port: 443
-    uuid: f893266c-4cdd-456e-92b6-a9c35344d090
-    alterId: 0
-    cipher: auto
-    network: ws
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
     tls: true
-    skip-cert-verify: false
+    servername: ava.game.naver.com.vip.prozect.xyz
+    network: ws
     ws-opts:
-      path: /vmessws
+      path: /vless
       headers:
-        Host: ava.game.naver.com.id1.ubaistore.my.id
+        Host: ava.game.naver.com.vip.prozect.xyz
 
-  - name: "SG"
+  - name: "VLESS | TIKTOK"
+    type: vless
+    server: 172.67.144.227
+    port: 443
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
+    tls: true
+    servername: vip.prozect.xyz
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: vip.prozect.xyz
+
+  - name: "VLESS | FB"
+    type: vless
+    server: investor.fb.com
+    port: 443
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
+    tls: true
+    servername: vip.prozect.xyz
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: vip.prozect.xyz
+
+  # ==== VMESS GROUP ====
+  - name: "VMESS | LINE"
     type: vmess
     server: ava.game.naver.com
     port: 443
     uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
     alterId: 0
     cipher: auto
-    network: ws
     tls: true
-    skip-cert-verify: false
+    network: ws
+    servername: ava.game.naver.com.allstorevpn.premm.shop
     ws-opts:
       path: /vmess
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: "TrojanID"
-    type: trojan
-    server: ava.game.naver.com
-    port: 2087
-    password: 98388cbc-3b5c-4778-bb82-d4165f73c8d7
-    network: ws
-    tls: true
-    sni: ustrj.cytun.xyz
-    skip-cert-verify: false
-    udp: true
-    ws-opts:
-      path: /trojan
-      headers:
-        Host: ustrj.cytun.xyz
-
-  - name: "VLESS SSHOcean"
-    type: vless
-    server: ava.game.naver.com
+  - name: "VMESS | IG"
+    type: vmess
+    server: graph.instagram.com
     port: 443
-    uuid: I_Love_🇵🇸_sshOcean_2694
-    encryption: none
-    network: ws
+    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
+    alterId: 0
+    cipher: auto
     tls: true
-    sni: ava.game.naver.com
-    skip-cert-verify: false
-    ws-opts:
-      path: /vless
-      headers:
-        Host: jp.v2vless.site
-        
-  - name: "VLESS Sushiroll"
-    type: vless
-    server: blog.sushiroll.co.id
-    port: 80
-    uuid: c605bdc6-d417-4839-9664-6b6e388e0206
-    encryption: none
     network: ws
-    tls: false
-    udp: true
+    servername: allstorevpn.premm.shop
     ws-opts:
-      path: /vless
+      path: /vmess
       headers:
-        Host: blog.sushiroll.co.id.cyber.nevpn.site
+        Host: allstorevpn.premm.shop
 
-  - name: "VMess JagoanSSH"
+  - name: "VMESS | FB"
     type: vmess
     server: investor.fb.com
     port: 443
-    uuid: 79669172-e0b2-489c-a511-2ccee261d040
+    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
     alterId: 0
     cipher: auto
-    network: ws
     tls: true
-    skip-cert-verify: true
-    servername: id2-ray.ipservers.xyz
-    ws-opts:
-      path: /JAGOANSSH/
-      headers:
-        Host: id2-ray.ipservers.xyz
-
-  - name: "TrojanSG"
-    server: 104.21.18.144
-    port: 443
-    type: trojan
-    udp: true
-    skip-cert-verify: true
-    password: 6884d714-d3c4-4b49-aa20-767ea92837d6
-    tls: true
-    sni: icecream.955850.xyz
     network: ws
+    servername: allstorevpn.premm.shop
     ws-opts:
-      path: /proxyip=45.67.215.153:443&proxyIP=null
+      path: /vmess
       headers:
-        Host: icecream.955850.xyz
-        
-  - name: "SS ID"
-    type: ss
-    server: idsocks.ipservers.xyz         
-    port: 443 
-    cipher: aes-256-cfb
-    password: ao5DFwfNdU
-    plugin: xray-plugin
-    plugin-opts:
-      mode: websocket
-      host: ava.game.naver.com
-      path: /ssws
-      tls: true
-    udp: true
-
-  - name: "wireguard-vpnlabs"
-    type: wireguard
-    server: ava.game.naver.com.nl.vpnlabs.site
-    port: 51820
-    ip: 10.66.66.9
-    ipv6: fd42:42:42::9
-    private-key: uLeSuMjNbKjKUPqSKP7w9PkfE0Q0Ejbw7Z7qRIkAeGg=
-    public-key: Xsl2kPJEEyDgFZ6xqRDXpFUwQ63+Iao2FA4LhTCKtEk=
-    pre-shared-key: Vgps4wbQ4FsQ+pUDaIbJT5FGKh2+soBAPI8/XI37m7w=
-    udp: true
-    dns:
-      - 1.1.1.1
-      - 1.0.0.1
+        Host: allstorevpn.premm.shop
 
 proxy-groups:
-  - name: "Proxy Group"
-    type: select
+  - name: "🌐 VLESS"
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 20
+    tolerance: 50
     proxies:
-      - "ID"
-      - "SG"
-      - "TrojanID"
-      - "VLESS SSHOcean"
-      - "VLESS Sushiroll"
-      - "VMess JagoanSSH"
-      - "Trojan SG"
-      - "SS ID"
-      - "wireguard-vpnlabs"
+      - "VLESS | LINE"
+      - "VLESS | TIKTOK"
+      - "VLESS | FB"
+
+  - name: "🌐 VMESS"
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 20
+    tolerance: 50
+    proxies:
+      - "VMESS | LINE"
+      - "VMESS | IG"
+      - "VMESS | FB"
+
+  - name: "🚀 Select"
+    type: fallback
+    url: "http://www.gstatic.com/generate_204"
+    interval: 15
+    proxies:
+      - "🌐 VLESS"
+      - "🌐 VMESS"
+
+rules:
+  - MATCH,🚀 Select
+
+dns:
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  enhanced-mode: redir-host
+  nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 112.215.203.254
+  fallback:
+    - https://dns.google/dns-query
+    - https://dns.cloudflare.com/dns-query
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+  use-hosts: true
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
