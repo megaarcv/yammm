@@ -85,54 +85,11 @@ proxies:
       headers:
         Host: allstorevpn.premm.shop
 
-proxy-groups:
-  - name: "🌐 VLESS"
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 20
-    tolerance: 50
-    proxies:
-      - "VLESS | LINE"
-      - "VLESS | TIKTOK"
-      - "VLESS | FB"
-
-  - name: "🌐 VMESS"
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 20
-    tolerance: 50
-    proxies:
-      - "VMESS | LINE"
-      - "VMESS | IG"
-      - "VMESS | FB"
-
   - name: "🚀 Select"
-    type: fallback
-    url: "http://www.gstatic.com/generate_204"
-    interval: 15
+    type: select
     proxies:
       - "🌐 VLESS"
       - "🌐 VMESS"
 
 rules:
   - MATCH,🚀 Select
-
-dns:
-  enable: true
-  listen: 0.0.0.0:7874
-  ipv6: false
-  enhanced-mode: redir-host
-  nameserver:
-    - 1.1.1.1
-    - 8.8.8.8
-    - 112.215.203.254
-  fallback:
-    - https://dns.google/dns-query
-    - https://dns.cloudflare.com/dns-query
-  default-nameserver:
-    - 1.1.1.1
-    - 8.8.8.8
-  use-hosts: true
-  fake-ip-filter:
-    - "+.lan"
-    - "+.local"
