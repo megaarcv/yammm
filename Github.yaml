@@ -1,46 +1,34 @@
 proxies:
-  # ==== VLESS GROUP ====
-  - name: "VLESS | LINE"
+  - name: trojan-sg
+    type: trojan
+    server: ava.game.naver.com
+    port: 443
+    password: cf322a7e-bcaf-4428-a232-a29ba84f53ff
+    udp: true
+    skip-cert-verify: true
+    sni: ava.game.naver.com.premium.kimmy3.my.id
+    network: ws
+    ws-opts:
+      path: "/trojan-ws"
+      headers:
+        Host: ava.game.naver.com.premium.kimmy3.my.id
+
+  - name: vless-sg
     type: vless
     server: ava.game.naver.com
     port: 443
     uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
-    tls: true
-    servername: ava.game.naver.com.vip.prozect.xyz
+    encryption: none
     network: ws
+    tls: true
+    skip-cert-verify: true
+    servername: ava.game.naver.com.vip.prozect.xyz
     ws-opts:
-      path: /vless
+      path: "/vless"
       headers:
         Host: ava.game.naver.com.vip.prozect.xyz
 
-  - name: "VLESS | TIKTOK"
-    type: vless
-    server: 172.67.144.227
-    port: 443
-    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
-    tls: true
-    servername: vip.prozect.xyz
-    network: ws
-    ws-opts:
-      path: /vless
-      headers:
-        Host: vip.prozect.xyz
-
-  - name: "VLESS | FB"
-    type: vless
-    server: investor.fb.com
-    port: 443
-    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
-    tls: true
-    servername: vip.prozect.xyz
-    network: ws
-    ws-opts:
-      path: /vless
-      headers:
-        Host: vip.prozect.xyz
-
-  # ==== VMESS GROUP ====
-  - name: "VMESS | LINE"
+  - name: vmess-sg
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -55,41 +43,63 @@ proxies:
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: "VMESS | IG"
-    type: vmess
-    server: graph.instagram.com
-    port: 443
-    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    servername: allstorevpn.premm.shop
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: allstorevpn.premm.shop
-
-  - name: "VMESS | FB"
-    type: vmess
-    server: investor.fb.com
-    port: 443
-    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    servername: allstorevpn.premm.shop
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: allstorevpn.premm.shop
-
-  - name: "🚀 Select"
+proxy-groups:
+  - name: Streaming
     type: select
     proxies:
-      - "🌐 VLESS"
-      - "🌐 VMESS"
+      - vmess-sg
+      - DIRECT
+
+  - name: Browsing
+    type: select
+    proxies:
+      - vless-sg
+      - DIRECT
+
+  - name: Game
+    type: select
+    proxies:
+      - trojan-sg
+      - DIRECT
+
+  - name: Balance
+    type: load-balance
+    strategy: round-robin
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - vmess-sg
+      - vless-sg
+      - trojan-sg
+
+  - name: Default
+    type: select
+    proxies:
+      - Balance
+      - vmess-sg
+      - vless-sg
+      - trojan-sg
+      - DIRECT
 
 rules:
-  - MATCH,🚀 Select
+  # Streaming
+  - DOMAIN-SUFFIX,youtube.com,Streaming
+  - DOMAIN-SUFFIX,ytimg.com,Streaming
+  - DOMAIN-SUFFIX,netflix.com,Streaming
+  - DOMAIN-SUFFIX,naver.game.com,Streaming
+
+  # Browsing
+  - DOMAIN-KEYWORD,google,Browsing
+  - DOMAIN-SUFFIX,facebook.com,Browsing
+  - DOMAIN-SUFFIX,instagram.com,Browsing
+  - DOMAIN-SUFFIX,twitter.com,Browsing
+  - DOMAIN-SUFFIX,tiktok.com,Browsing
+
+  # Game
+  - DOMAIN-KEYWORD,line,Game
+  - DOMAIN-KEYWORD,steam,Game
+  - DOMAIN-SUFFIX,mobilelegends.com,Game
+  - DOMAIN-KEYWORD,garena,Game
+  - DOMAIN-KEYWORD,riotgames,Game
+
+  - MATCH,Default
